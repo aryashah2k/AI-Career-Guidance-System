@@ -28,18 +28,29 @@ try:
     c3.button("Check", on_click=on_click)
 except Exception as e:
     st.exception(e)
-    mkd = """Please set the user and password. Add 2 lines like this to your secrets.toml file (with a stronger configuration):\n
-USER = "admin"\n
-PASSWORD = "1234"
+
+
+
+page_bg_img = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+background-image: url("https://iili.io/bk2duf.md.png");
+background-size: cover;
+background-position: top left;
+background-repeat: no-repeat;
+background-attachment: local;
+}}
+[data-testid="stSidebar"] > div:first-child {{
+background-image: url("https://iili.io/bk2duf.md.png");
+background-position: center; 
+background-repeat: no-repeat;
+background-attachment: fixed;
+}}
+[data-testid="stHeader"] {{
+background: rgba(0,0,0,0);
+}}
+
+</style>
 """
-    st.error(mkd)
 
-st.markdown("---")
-st.markdown("This is an optional page. You can remove this page from streamlit_app.py, and the app will still work.")
-st.markdown("You can also access this page by appending '?view=admin' to the [URL](https://stbook-template.streamlitapp.com/?view=admin)")
-
-st.markdown("Use the following EXTREMELY WEAK credentials to login: **admin** / **4321**")
-st.markdown("""You should set up variables USER and PASSWORD on .streamlit/secrets.toml 
-and/or the app properties (as suggested on 
-[streamlit's secrets](https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app/connect-to-data-sources/secrets-management)
-)""")
+st.markdown(page_bg_img, unsafe_allow_html=True)
