@@ -22,8 +22,8 @@ else:
                 menu_title="Admin",
                 menu_icon="public",
                 options=[
-                    "My Private Home",   
-                    "A Private Page", 
+                    "My Home",   
+                    "Career Recommender", 
                     "Logout", 
                     ], 
                 paths=[
@@ -43,7 +43,7 @@ else:
                 menu_icon="private",
                 options=[
                     "Home",   
-                    "Some Interesting Page", 
+                    "Explore Careers", 
                     "Login", 
                     ], 
                 paths=[
@@ -59,4 +59,4 @@ else:
                 )        
 
 # Add floating button
-stb.floating_button("https://sebastiandres.typeform.com/to/tlqGY1T9", "chat-left-dots-fill", "white", "red")
+stb.floating_button("https://forms.gle/r1VMgAVoYHVUSpH38", "chat-left-dots-fill", "white", "blue")
