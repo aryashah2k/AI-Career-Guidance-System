@@ -1,0 +1,1064 @@
+<html>
+<head>
+ <title>Deploy Ml model</title>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+      body{
+            background-color: rgb(210, 221, 223);
+            color:rgb(0, 0, 0);
+            background-image: url('https://iili.io/bk2duf.md.png');background-attachment: fixed;
+background-size: cover 
+             ;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      }
+
+.label-input100{
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      margin-left: 40px;
+      font-size: large;
+      font-weight:bolder;
+}
+/*for the persona q*/
+.label-input1{
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      margin-left: 47px;
+      font-weight:bolder;
+      font:bolder;
+      margin-left:45px;
+      font-size: 20px;
+
+      
+}
+/*for the personaloity style*/
+.box1{
+     
+      margin-left: 45px;
+      font-size: 15px;
+      margin-top: 15px;
+      margin-bottom: 30px;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      font-weight: lighter;
+}
+
+
+/* for the animationsa*/
+
+.switch-field {
+  font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
+  padding: 40px;
+	overflow: hidden;
+}
+
+.switch-title {
+  margin-bottom: 6px;
+}
+
+.switch-field input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+}
+
+.switch-field label {
+  float: left;
+}
+
+.switch-field label {
+  display: inline-block;
+  width: 60px;
+  background-color: #e4e4e4;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  text-shadow: none;
+  padding: 6px 14px;
+  margin-top: -30px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition:    all 0.1s ease-in-out;
+  -ms-transition:     all 0.1s ease-in-out;
+  -o-transition:      all 0.1s ease-in-out;
+  transition:         all 0.1s ease-in-out;
+}
+
+.switch-field label:hover {
+	cursor: pointer;
+}
+
+.switch-field input:checked + label {
+  background-color: #37ff37;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-style: bold;
+}
+
+.switch-field label:first-of-type {
+  border-radius: 4px 0 0 4px;
+}
+
+.switch-field label:last-of-type {
+  border-radius: 0 4px 4px 0;
+}
+
+/*form*/
+
+</style>
+
+
+<body>
+<br>
+<br>
+
+ <form class="form1" action="predict" method="post" style="background-color: #a9e1f1; padding: 20px;width:920px;margin-left:210px;border: 8px solid black">
+ {% csrf_token %}
+ <br>
+ <br>
+ <h2 style="margin-left:235px;font-size:50px"><b>QUESTIONNAIRE</b></h2>
+ <br>
+ <h4 style="margin-left:300px;margin-top:-20px">(Please fill the given questionnare) </h4>
+ <br>
+ <h3 style="margin-left:40px;"><b>Part 1 : Technical skills : </b></h3><br>
+ <h4 style="margin-top:-20px;margin-left:40px">Please rate your skills in the given domains on a scale of 1-7 with 7 being 'excellent' and 1 being 'Poor'.</h4><br>
+ <br>
+ <span class="label-input100">Database Fundamentals</span><br>
+ <div class="switch-field">
+ <input type="radio" name="db_rating" value="1" id="1_1" checked>
+ <label for="1_1">1</label>
+    <input type="radio" name="db_rating" value="2" id="1_2">
+    <label for="1_2">2</label>
+    <input type="radio" name="db_rating" value="3" id="1_3">
+    <label for="1_3">3</label>
+    <input type="radio" name="db_rating" value="4" id="1_4">
+    <label for="1_4">4</label>
+    <input type="radio" name="db_rating" value="5"id="1_5">
+    <label for="1_5">5</label>
+    <input type="radio" name="db_rating" value="6" id="1_6">
+    <label for="1_6">6</label>
+    <input type="radio" name="db_rating" value="7" id="1_7">
+    <label for="1_7">7</label>
+</div>
+
+
+
+<span class="label-input100">Computer Architecture</span><br>
+<div class="switch-field">
+      <input type="radio" name="comp_arch_rating" value="1" id="2_1"  checked>
+      <label for="2_1">1</label>
+         <input type="radio" name="comp_arch_rating" value="2" id="2_2">
+         <label for="2_2">2</label>
+         <input type="radio" name="comp_arch_rating" value="3" id="2_3">
+         <label for="2_3">3</label>
+         <input type="radio" name="comp_arch_rating" value="4" id="2_4">
+         <label for="2_4">4</label>
+         <input type="radio" name="comp_arch_rating" value="5"id="2_5">
+         <label for="2_5">5</label>
+         <input type="radio" name="comp_arch_rating" value="6" id="2_6">
+         <label for="2_6">6</label>
+         <input type="radio" name="comp_arch_rating" value="7" id="2_7">
+         <label for="2_7">7</label>
+</div>
+
+<br>
+
+<span class="label-input100">Distributed Computing Systems</span><br>
+<div class="switch-field">
+      <input type="radio" name="dist_comp_rating" value="1" id="3_1"  checked>
+      <label for="3_1">1</label>
+         <input type="radio" name="dist_comp_rating" value="2" id="3_2">
+         <label for="3_2">2</label>
+         <input type="radio" name="dist_comp_rating" value="3" id="3_3">
+         <label for="3_3">3</label>
+         <input type="radio" name="dist_comp_rating" value="4" id="3_4">
+         <label for="3_4">4</label>
+         <input type="radio" name="dist_comp_rating" value="5"id="3_5">
+         <label for="3_5">5</label>
+         <input type="radio" name="dist_comp_rating" value="6" id="3_6">
+         <label for="3_6">6</label>
+         <input type="radio" name="dist_comp_rating" value="7" id="3_7">
+         <label for="3_7">7</label>
+</div>
+<br>  
+
+<span class="label-input100">Cyber Security</span><br>
+<div class="switch-field">
+      <input type="radio" name="cybersecurity" value="1" id="4_1"  checked>
+      <label for="4_1">1</label>
+         <input type="radio" name="cybersecurity" value="2" id="4_2">
+         <label for="4_2">2</label>
+         <input type="radio" name="cybersecurity" value="3" id="4_3">
+         <label for="4_3">3</label>
+         <input type="radio" name="cybersecurity" value="4" id="4_4">
+         <label for="4_4">4</label>
+         <input type="radio" name="cybersecurity" value="5"id="4_5">
+         <label for="4_5">5</label>
+         <input type="radio" name="cybersecurity" value="6" id="4_6">
+         <label for="4_6">6</label>
+         <input type="radio" name="cybersecurity" value="7" id="4_7">
+         <label for="4_7">7</label>
+</div>
+<br> 
+
+<span class="label-input100">Networking</span><br>
+<div class="switch-field">
+      <input type="radio" name="networking" value="1" id="5_1"  checked>
+      <label for="5_1">1</label>
+         <input type="radio" name="networking" value="2" id="5_2">
+         <label for="5_2">2</label>
+         <input type="radio" name="networking" value="3" id="5_3">
+         <label for="5_3">3</label>
+         <input type="radio" name="networking" value="4" id="5_4">
+         <label for="5_4">4</label>
+         <input type="radio" name="networking" value="5"id="5_5">
+         <label for="5_5">5</label>
+         <input type="radio" name="networking" value="6" id="5_6">
+         <label for="5_6">6</label>
+         <input type="radio" name="networking" value="7" id="5_7">
+         <label for="5_7">7</label>
+</div>  
+<br> 
+
+<span class="label-input100">Development</span><br>
+<div class="switch-field">
+      <input type="radio" name="development" value="1" id="6_1"  checked>
+      <label for="6_1">1</label>
+         <input type="radio" name="development" value="2" id="6_2">
+         <label for="6_2">2</label>
+         <input type="radio" name="development" value="3" id="6_3">
+         <label for="6_3">3</label>
+         <input type="radio" name="development" value="4" id="6_4">
+         <label for="6_4">4</label>
+         <input type="radio" name="development" value="5"id="6_5">
+         <label for="6_5">5</label>
+         <input type="radio" name="development" value="6" id="6_6">
+         <label for="6_6">6</label>
+         <input type="radio" name="development" value="7" id="6_7">
+         <label for="6_7">7</label>
+</div>   
+<br> 
+
+<span class="label-input100">Programming Skills</span><br>
+<div class="switch-field">
+      <input type="radio" name="programmingskills" value="1" id="7_1"  checked>
+      <label for="7_1">1</label>
+         <input type="radio" name="programmingskills" value="2" id="7_2">
+         <label for="7_2">2</label>
+         <input type="radio" name="programmingskills" value="3" id="7_3">
+         <label for="7_3">3</label>
+         <input type="radio" name="programmingskills" value="4" id="7_4">
+         <label for="7_4">4</label>
+         <input type="radio" name="programmingskills" value="5"id="7_5">
+         <label for="7_5">5</label>
+         <input type="radio" name="programmingskills" value="6" id="7_6">
+         <label for="7_6">6</label>
+         <input type="radio" name="programmingskills" value="7" id="7_7">
+         <label for="7_7">7</label>
+</div>   
+
+<br>
+    
+<span class="label-input100">Project Management</span><br>
+<div class="switch-field">
+      <input type="radio" name="project_management_rating" value="1" id="8_1"  checked>
+      <label for="8_1">1</label>
+         <input type="radio" name="project_management_rating" value="2" id="8_2">
+         <label for="8_2">2</label>
+         <input type="radio" name="project_management_rating" value="3" id="8_3">
+         <label for="8_3">3</label>
+         <input type="radio" name="project_management_rating" value="4" id="8_4">
+         <label for="8_4">4</label>
+         <input type="radio" name="project_management_rating" value="5"id="8_5">
+         <label for="8_5">5</label>
+         <input type="radio" name="project_management_rating" value="6" id="8_6">
+         <label for="8_6">6</label>
+         <input type="radio" name="project_management_rating" value="7" id="8_7">
+         <label for="8_7">7</label>
+</div>   
+
+<br>
+        
+<span class="label-input100">Computer Forensics Fundamental</span><br>
+<div class="switch-field">
+      <input type="radio" name="computer_forensics_fundamental_rating" value="1" id="9_1"  checked>
+      <label for="9_1">1</label>
+         <input type="radio" name="computer_forensics_fundamental_rating" value="2" id="9_2">
+         <label for="9_2">2</label>
+         <input type="radio" name="computer_forensics_fundamental_rating" value="3" id="9_3">
+         <label for="9_3">3</label>
+         <input type="radio" name="computer_forensics_fundamental_rating" value="4" id="9_4">
+         <label for="9_4">4</label>
+         <input type="radio" name="computer_forensics_fundamental_rating" value="5"id="9_5">
+         <label for="9_5">5</label>
+         <input type="radio" name="computer_forensics_fundamental_rating" value="6" id="9_6">
+         <label for="9_6">6</label>
+         <input type="radio" name="computer_forensics_fundamental_rating" value="7" id="9_7">
+         <label for="9_7">7</label>
+</div>   
+<br>
+    
+<span class="label-input100">Technical Communication</span><br>
+<div class="switch-field">
+      <input type="radio" name="technical_communication_rating" value="1" id="10_1"  checked>
+      <label for="10_1">1</label>
+         <input type="radio" name="technical_communication_rating" value="2" id="10_2">
+         <label for="10_2">2</label>
+         <input type="radio" name="technical_communication_rating" value="3" id="10_3">
+         <label for="10_3">3</label>
+         <input type="radio" name="technical_communication_rating" value="4" id="10_4">
+         <label for="10_4">4</label>
+         <input type="radio" name="technical_communication_rating" value="5"id="10_5">
+         <label for="10_5">5</label>
+         <input type="radio" name="technical_communication_rating" value="6" id="10_6">
+         <label for="10_6">6</label>
+         <input type="radio" name="technical_communication_rating" value="7" id="10_7">
+         <label for="10_7">7</label>
+</div>   
+<br>
+    
+<span class="label-input100">AI ML</span><br>
+<div class="switch-field">
+      <input type="radio" name="ai_ml_rating" value="1" id="11_1"  checked>
+      <label for="11_1">1</label>
+         <input type="radio" name="ai_ml_rating" value="2" id="11_2">
+         <label for="11_2">2</label>
+         <input type="radio" name="ai_ml_rating" value="3" id="11_3">
+         <label for="11_3">3</label>
+         <input type="radio" name="ai_ml_rating" value="4" id="11_4">
+         <label for="11_4">4</label>
+         <input type="radio" name="ai_ml_rating" value="5"id="11_5">
+         <label for="11_5">5</label>
+         <input type="radio" name="ai_ml_rating" value="6" id="11_6">
+         <label for="11_6">6</label>
+         <input type="radio" name="ai_ml_rating" value="7" id="11_7">
+         <label for="11_7">7</label>
+</div>  
+<br>
+    
+<span class="label-input100">Software Engineering</span><br>
+<div class="switch-field">
+      <input type="radio" name="software_eng_rating" value="1" id="12_1"  checked>
+      <label for="12_1">1</label>
+         <input type="radio" name="software_eng_rating" value="2" id="12_2">
+         <label for="12_2">2</label>
+         <input type="radio" name="software_eng_rating" value="3" id="12_3">
+         <label for="12_3">3</label>
+         <input type="radio" name="software_eng_rating" value="4" id="12_4">
+         <label for="12_4">4</label>
+         <input type="radio" name="software_eng_rating" value="5"id="12_5">
+         <label for="12_5">5</label>
+         <input type="radio" name="software_eng_rating" value="6" id="12_6">
+         <label for="12_6">6</label>
+         <input type="radio" name="software_eng_rating" value="7" id="12_7">
+         <label for="12_7">7</label>
+</div>  
+<br>
+
+<span class="label-input100">Business Analysis</span><br>
+<div class="switch-field">
+      <input type="radio" name="business_analysis_rating" value="1" id="13_1" checked>
+      <label for="13_1">1</label>
+         <input type="radio" name="business_analysis_rating" value="2" id="13_2">
+         <label for="13_2">2</label>
+         <input type="radio" name="business_analysis_rating" value="3" id="13_3">
+         <label for="13_3">3</label>
+         <input type="radio" name="business_analysis_rating" value="4" id="13_4">
+         <label for="13_4">4</label>
+         <input type="radio" name="business_analysis_rating" value="5"id="13_5">
+         <label for="13_5">5</label>
+         <input type="radio" name="business_analysis_rating" value="6" id="13_6">
+         <label for="13_6">6</label>
+         <input type="radio" name="business_analysis_rating" value="7" id="13_7">
+         <label for="13_7">7</label>
+</div> 
+<br>
+    
+<span class="label-input100">Communication skills</span><br>
+<div class="switch-field">
+      <input type="radio" name="communication_skills_rating" value="1" id="14_1"  checked>
+      <label for="14_1">1</label>
+         <input type="radio" name="communication_skills_rating" value="2" id="14_2">
+         <label for="14_2">2</label>
+         <input type="radio" name="communication_skills_rating" value="3" id="14_3">
+         <label for="14_3">3</label>
+         <input type="radio" name="communication_skills_rating" value="4" id="14_4">
+         <label for="14_4">4</label>
+         <input type="radio" name="communication_skills_rating" value="5"id="14_5">
+         <label for="14_5">5</label>
+         <input type="radio" name="communication_skills_rating" value="6" id="14_6">
+         <label for="14_6">6</label>
+         <input type="radio" name="communication_skills_rating" value="7" id="14_7">
+         <label for="14_7">7</label>
+</div> 
+<br>
+    
+<span class="label-input100">Data Science</span><br>
+<div class="switch-field">
+      <input type="radio" name="data_science_rating" value="1" id="15_1"  checked>
+      <label for="15_1">1</label>
+         <input type="radio" name="data_science_rating" value="2" id="15_2">
+         <label for="15_2">2</label>
+         <input type="radio" name="data_science_rating" value="3" id="15_3">
+         <label for="15_3">3</label>
+         <input type="radio" name="data_science_rating" value="4" id="15_4">
+         <label for="15_4">4</label>
+         <input type="radio" name="data_science_rating" value="5"id="15_5">
+         <label for="15_5">5</label>
+         <input type="radio" name="data_science_rating" value="6" id="15_6">
+         <label for="15_6">6</label>
+         <input type="radio" name="data_science_rating" value="7" id="15_7">
+         <label for="15_7">7</label>
+</div> 
+<br>
+    
+<span class="label-input100">Troubleshooting skills</span><br>
+<div class="switch-field">
+      <input type="radio" name="troubleshooting-rating" value="1" id="16_1"  checked>
+      <label for="16_1">1</label>
+         <input type="radio" name="troubleshooting-rating" value="2" id="16_2">
+         <label for="16_2">2</label>
+         <input type="radio" name="troubleshooting-rating" value="3" id="16_3">
+         <label for="16_3">3</label>
+         <input type="radio" name="troubleshooting-rating" value="4" id="16_4">
+         <label for="16_4">4</label>
+         <input type="radio" name="troubleshooting-rating" value="5"id="16_5">
+         <label for="16_5">5</label>
+         <input type="radio" name="troubleshooting-rating" value="6" id="16_6">
+         <label for="16_6">6</label>
+         <input type="radio" name="troubleshooting-rating" value="7" id="16_7">
+         <label for="16_7">7</label>
+</div> 
+<br>
+    
+<span class="label-input100">Graphics Designing</span><br>
+<div class="switch-field">
+      <input type="radio" name="graphics-designing-rating" value="1" id="17_1"  checked>
+      <label for="17_1">1</label>
+         <input type="radio" name="graphics-designing-rating" value="2" id="17_2">
+         <label for="17_2">2</label>
+         <input type="radio" name="graphics-designing-rating" value="3" id="17_3">
+         <label for="17_3">3</label>
+         <input type="radio" name="graphics-designing-rating" value="4" id="17_4">
+         <label for="17_4">4</label>
+         <input type="radio" name="graphics-designing-rating" value="5"id="17_5">
+         <label for="17_5">5</label>
+         <input type="radio" name="graphics-designing-rating" value="6" id="17_6">
+         <label for="17_6">6</label>
+         <input type="radio" name="graphics-designing-rating" value="7" id="17_7">
+         <label for="17_7">7</label>
+</div> 
+<br>
+
+
+  
+<h3 style="margin-left:40px;"><b>Part 2 : Personality Traits: </b></h3><br>
+<h4 style="margin-top:-20px;margin-left:40px">Please answer with to which extent you agree with the given statements:'.</h4><br>
+
+<span class="label-input1">I am the life of the party.</span>
+
+<div class="box1">
+<input type="radio" id="openness_sd" name="ext1" value="Strongly Disagree"  checked>
+<label for="openness_sd">Strongly Disagree</label><br>
+<input type="radio" id="openness_d" name="ext1" value="Disagree">
+<label for="openness_d">Disagree</label><br>
+<input type="radio" id="openness_sl" name="ext1" value="Slightly Disagree">
+<label for="openness_sl">Slightly Disagree</label><br>
+<input type="radio" id="openness_n" name="ext1" value="Neutral">
+<label for="openness_n">Neutral</label><br>
+<input type="radio" id="openness_sa" name="ext1" value="Slightly Agree">
+<label for="openness_sa">Slightly Agree</label><br>
+<input type="radio" id="openness_a" name="ext1" value="Agree">
+<label for="openness_a">Agree</label><br>
+<input type="radio" id="openness_sa" name="ext1" value="Strongly Agree">
+<label for="openness_sa">Strongly Agree</label>    
+</div>
+
+<span class="label-input1">I don't talk a lot.</span><br>
+<div class="box1">
+<input type="radio" id="conscientiousness_sd" name="ext2" value="Strongly Disagree"  checked>
+    <label for="conscientiousness_sd">Strongly Disagree</label><br>
+    <input type="radio" id="conscientiousness_d" name="ext2" value="Disagree">
+    <label for="conscientiousness_d">Disagree</label><br>
+    <input type="radio" id="conscientiousness_sl" name="ext2" value="Slightly Disagree">
+    <label for="conscientiousness_sl">Slightly Disagree</label><br>
+    <input type="radio" id="conscientiousness_n" name="ext2" value="Neutral">
+    <label for="conscientiousness_n">Neutral</label><br>
+    <input type="radio" id="conscientiousness_sa" name="ext2" value="Slightly Agree">
+    <label for="conscientiousness_sa">Slightly Agree</label><br>
+    <input type="radio" id="conscientiousness_a" name="ext2" value="Agree">
+    <label for="conscientiousness_a">Agree</label><br>
+    <input type="radio" id="conscientiousness_sa" name="ext2" value="Strongly Agree">
+    <label for="conscientiousness_sa">Strongly Agree</label>
+</div>
+    
+
+<span class="label-input1">I feel comfortable around people.</span><br>
+<div class="box1">
+<input type="radio" id="conscientiousness_sd" name="ext3" value="Strongly Disagree"  checked>
+        <label for="conscientiousness_sd">Strongly Disagree</label><br>
+        <input type="radio" id="conscientiousness_d" name="ext3" value="Disagree">
+        <label for="conscientiousness_d">Disagree</label><br>
+        <input type="radio" id="conscientiousness_sl" name="ext3" value="Slightly Disagree">
+        <label for="conscientiousness_sl">Slightly Disagree</label><br>
+        <input type="radio" id="conscientiousness_n" name="ext3" value="Neutral">
+        <label for="conscientiousness_n">Neutral</label><br>
+        <input type="radio" id="conscientiousness_sa" name="ext3" value="Slightly Agree">
+        <label for="conscientiousness_sa">Slightly Agree</label><br>
+        <input type="radio" id="conscientiousness_a" name="ext3" value="Agree">
+        <label for="conscientiousness_a">Agree</label><br>
+        <input type="radio" id="conscientiousness_sa" name="ext3" value="Strongly Agree">
+        <label for="conscientiousness_sa">Strongly Agree</label>
+      </div>
+
+<span class="label-input1">I am quiet around strangers.</span><br>
+<div class="box1">
+<input type="radio" id="conscientiousness_sd" name="ext4" value="Strongly Disagree"  checked>
+            <label for="conscientiousness_sd">Strongly Disagree</label><br>
+            <input type="radio" id="conscientiousness_d" name="ext4" value="Disagree">
+            <label for="conscientiousness_d">Disagree</label><br>
+            <input type="radio" id="conscientiousness_sl" name="ext4" value="Slightly Disagree">
+            <label for="conscientiousness_sl">Slightly Disagree</label><br>
+            <input type="radio" id="conscientiousness_n" name="ext4" value="Neutral">
+            <label for="conscientiousness_n">Neutral</label><br>
+            <input type="radio" id="conscientiousness_sa" name="ext4" value="Slightly Agree">
+            <label for="conscientiousness_sa">Slightly Agree</label><br>
+            <input type="radio" id="conscientiousness_a" name="ext4" value="Agree">
+            <label for="conscientiousness_a">Agree</label><br>
+            <input type="radio" id="conscientiousness_sa" name="ext4" value="Strongly Agree">
+            <label for="conscientiousness_sa">Strongly Agree</label>
+        
+      </div>
+<!--extraversion done -->
+    
+<span class="label-input1">I get stressed out easily.</span><br>
+<div class="box1">
+<input type="radio" id="ex1" name="est1" value="Strongly Disagree"  checked>
+		<label for="ex1">Strongly Disagree</label><br>
+		<input type="radio" id="ex2" name="est1" value="Disagree">
+		<label for="ex2">Disagree</label><br>
+		<input type="radio" id="ex3" name="est1" value="Slightly Disagree">
+		<label for="ex3">Slightly Disagree</label><br>
+		<input type="radio" id="ex4" name="est1" value="Neutral">
+		<label for="ex4">Neutral</label><br>
+		<input type="radio" id="ex5" name="est1" value="Slightly Agree">
+		<label for="ex5">Slightly Agree</label><br>
+		<input type="radio" id="ex6" name="est1" value="Agree">
+		<label for="ex6">Agree</label><br>
+		<input type="radio" id="ex7" name="est1" value="Strongly Agree">
+		<label for="ex7">Strongly Agree</label><br>
+      </div>
+
+<span class="label-input1">I get irritated easily.</span><br>
+<div class="box1">
+  <input type="radio" id="ex1" name="est2" value="Strongly Disagree"  checked>
+      <label for="ex1">Strongly Disagree</label><br>
+      <input type="radio" id="ex2" name="est2" value="Disagree">
+      <label for="ex2">Disagree</label><br>
+      <input type="radio" id="ex3" name="est2" value="Slightly Disagree">
+      <label for="ex3">Slightly Disagree</label><br>
+      <input type="radio" id="ex4" name="est2" value="Neutral">
+      <label for="ex4">Neutral</label><br>
+      <input type="radio" id="ex5" name="est2" value="Slightly Agree">
+      <label for="ex5">Slightly Agree</label><br>
+      <input type="radio" id="ex6" name="est2" value="Agree">
+      <label for="ex6">Agree</label><br>
+      <input type="radio" id="ex7" name="est2" value="Strongly Agree">
+      <label for="ex7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I worry about things.</span><br>
+<div class="box1">
+<input type="radio" id="ex1" name="est3" value="Strongly Disagree"  checked>
+          <label for="ex1">Strongly Disagree</label><br>
+          <input type="radio" id="ex2" name="est3" value="Disagree">
+          <label for="ex2">Disagree</label><br>
+          <input type="radio" id="ex3" name="est3" value="Slightly Disagree">
+          <label for="ex3">Slightly Disagree</label><br>
+          <input type="radio" id="ex4" name="est3" value="Neutral">
+          <label for="ex4">Neutral</label><br>
+          <input type="radio" id="ex5" name="est3" value="Slightly Agree">
+          <label for="ex5">Slightly Agree</label><br>
+          <input type="radio" id="ex6" name="est3" value="Agree">
+          <label for="ex6">Agree</label><br>
+          <input type="radio" id="ex7" name="est3" value="Strongly Agree">
+          <label for="ex7">Strongly Agree</label><br>
+      </div>
+
+<span class="label-input1">I change my mood a lot.</span><br>
+<div class="box1">
+<input type="radio" id="ex1" name="est4" value="Strongly Disagree"  checked>
+        <label for="ex1">Strongly Disagree</label><br>
+        <input type="radio" id="ex2" name="est4" value="Disagree">
+        <label for="ex2">Disagree</label><br>
+        <input type="radio" id="ex3" name="est4" value="Slightly Disagree">
+        <label for="ex3">Slightly Disagree</label><br>
+        <input type="radio" id="ex4" name="est4" value="Neutral">
+        <label for="ex4">Neutral</label><br>
+        <input type="radio" id="ex5" name="est4" value="Slightly Agree">
+        <label for="ex5">Slightly Agree</label><br>
+        <input type="radio" id="ex6" name="est4" value="Agree">
+        <label for="ex6">Agree</label><br>
+        <input type="radio" id="ex7" name="est4" value="Strongly Agree">
+        <label for="ex7">Strongly Agree</label><br>
+          
+      </div>
+
+<!--est part done-->
+    
+<span class="label-input1">I have a soft heart.</span><br>
+<div class="box1">
+
+<input type="radio" id="ad1" name="agr1" value="Strongly Disagree"  checked>
+<label for="ad1">Strongly Disagree</label><br>
+<input type="radio" id="ad2" name="agr1" value="Disagree">
+<label for="ad2">Disagree</label><br>
+<input type="radio" id="ad3" name="agr1" value="Slightly Disagree">
+<label for="ad3">Slightly Disagree</label><br>
+<input type="radio" id="ad4" name="agr1" value="Neutral">
+<label for="ad4">Neutral</label><br>
+<input type="radio" id="ad5" name="agr1" value="Slightly Agree">
+<label for="ad5">Slightly Agree</label><br>
+<input type="radio" id="ad6" name="agr1" value="Agree">
+<label for="ad6">Agree</label><br>
+<input type="radio" id="ad7" name="agr1" value="Strongly Agree">
+<label for="ad7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I am interested in people.</span><br>
+<div class="box1">
+
+<input type="radio" id="ad1" name="agr2" value="Strongly Disagree" checked>
+<label for="ad1">Strongly Disagree</label><br>
+<input type="radio" id="ad2" name="agr2" value="Disagree">
+<label for="ad2">Disagree</label><br>
+<input type="radio" id="ad3" name="agr2" value="Slightly Disagree">
+<label for="ad3">Slightly Disagree</label><br>
+<input type="radio" id="ad4" name="agr2" value="Neutral">
+<label for="ad4">Neutral</label><br>
+<input type="radio" id="ad5" name="agr2" value="Slightly Agree">
+<label for="ad5">Slightly Agree</label><br>
+<input type="radio" id="ad6" name="agr2" value="Agree">
+<label for="ad6">Agree</label><br>
+<input type="radio" id="ad7" name="agr2" value="Strongly Agree">
+<label for="ad7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I insult people.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="agr3" value="Strongly Disagree"  checked>
+<label for="ad1">Strongly Disagree</label><br>
+<input type="radio" id="ad2" name="agr3" value="Disagree">
+<label for="ad2">Disagree</label><br>
+<input type="radio" id="ad3" name="agr3" value="Slightly Disagree">
+<label for="ad3">Slightly Disagree</label><br>
+<input type="radio" id="ad4" name="agr3" value="Neutral">
+<label for="ad4">Neutral</label><br>
+<input type="radio" id="ad5" name="agr3" value="Slightly Agree">
+<label for="ad5">Slightly Agree</label><br>
+<input type="radio" id="ad6" name="agr3" value="Agree">
+<label for="ad6">Agree</label><br>
+<input type="radio" id="ad7" name="agr3" value="Strongly Agree">
+<label for="ad7">Strongly Agree</label><br>
+</div>   
+
+<span class="label-input1">I am not really interested in others.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="agr4" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="agr4" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="agr4" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="agr4" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="agr4" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="agr4" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="agr4" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+
+<!--agr part done-->
+<span class="label-input1">I am always prepared.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="csn1" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="csn1" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="csn1" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="csn1" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="csn1" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="csn1" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="csn1" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I leave my belongings around.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="csn2" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="csn2" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="csn2" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="csn2" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="csn2" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="csn2" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="csn2" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I follow a schedule.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="csn3" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="csn3" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="csn3" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="csn3" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="csn3" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="csn3" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="csn3" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I make a mess of things.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="csn4" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="csn4" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="csn4" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="csn4" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="csn4" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="csn4" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="csn4" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+
+<!--csn done-->
+
+<span class="label-input1">I have a rich vocabulary.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="opn1" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="opn1" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="opn1" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="opn1" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="opn1" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="opn1" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="opn1" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I have difficulty understanding abstract ideas.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="opn2" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="opn2" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="opn2" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="opn2" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="opn2" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="opn2" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="opn2" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I do not have a good imagination.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="opn3" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="opn3" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="opn3" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="opn3" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="opn3" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="opn3" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="opn3" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I use difficult words.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="opn4" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="opn4" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="opn4" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="opn4" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="opn4" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="opn4" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="opn4" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+<!--opn done-->
+
+<span class="label-input1">I am afraid of change.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="otc" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="otc" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="otc" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="otc" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="otc" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="otc" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="otc" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+<!--otc done-->
+
+<span class="label-input1">I put worldly pleasures before productivity.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="hed" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="hed" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="hed" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="hed" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="hed" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="hed" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="hed" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+<!--hedo done-->
+
+<span class="label-input1">I feel connected to all living beings, including plants and animals.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="ste1" value="Strongly Disagree" checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="ste1" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="ste1" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="ste1" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="ste1" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="ste1" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="ste1" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I see a connection between who I am at all places and times.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="ste2" value="Strongly Disagree" checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="ste2" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="ste2" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="ste2" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="ste2" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="ste2" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="ste2" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I experience my self as more than my thoughts and feelings.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="ste3" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="ste3" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="ste3" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="ste3" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="ste3" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="ste3" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="ste3" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I am able to step back from my emotions and observe them from a separate point of view.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="ste4" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="ste4" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="ste4" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="ste4" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="ste4" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="ste4" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="ste4" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+<!-- ste done-->
+
+
+<span class="label-input1">I am capable of holding meaningful or respectful  conversations.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="con" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="con" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="con" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="con" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="con" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="con" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="con" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+<!--con done-->
+
+<span class="label-input1">I have control over my emotions.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="emo" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="emo" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="emo" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="emo" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="emo" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="emo" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="emo" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+<!--emoo done-->
+
+<span class="label-input1">I am self-motivated and driven to continually improve myself.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="set1" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="set1" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="set1" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="set1" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="set1" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="set1" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="set1" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I am willing to step outside of my comfort zone in order to challenge myself and grow.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="set2" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="set2" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="set2" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="set2" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="set2" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="set2" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="set2" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+     
+<span class="label-input1">I am open to constructive criticism and use it to improve myself.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="set3" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="set3" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="set3" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="set3" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="set3" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="set3" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="set3" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+
+<span class="label-input1">I am proactive in seeking out opportunities for self-enhancement.</span><br>
+<div class="box1">
+<input type="radio" id="ad1" name="set4" value="Strongly Disagree"  checked>
+      <label for="ad1">Strongly Disagree</label><br>
+      <input type="radio" id="ad2" name="set4" value="Disagree">
+      <label for="ad2">Disagree</label><br>
+      <input type="radio" id="ad3" name="set4" value="Slightly Disagree">
+      <label for="ad3">Slightly Disagree</label><br>
+      <input type="radio" id="ad4" name="set4" value="Neutral">
+      <label for="ad4">Neutral</label><br>
+      <input type="radio" id="ad5" name="set4" value="Slightly Agree">
+      <label for="ad5">Slightly Agree</label><br>
+      <input type="radio" id="ad6" name="set4" value="Agree">
+      <label for="ad6">Agree</label><br>
+      <input type="radio" id="ad7" name="set4" value="Strongly Agree">
+      <label for="ad7">Strongly Agree</label><br>
+</div>
+      
+      
+<button style="margin-left:350px;width:100px;border:8px solid black;color:black" type="submit" class="btn btn-success">Submit</button>
+ </form>
+</body>
+</html>
