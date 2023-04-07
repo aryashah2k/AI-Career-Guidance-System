@@ -1,6 +1,4 @@
-streamlit
 django
 pandas
 numpy
-matplotlib
 scikit-learn
