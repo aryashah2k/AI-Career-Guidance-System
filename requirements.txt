@@ -1,5 +1,6 @@
 streamlit
-streamlit_book
+django
 pandas
 numpy
 matplotlib
+scikit-learn
